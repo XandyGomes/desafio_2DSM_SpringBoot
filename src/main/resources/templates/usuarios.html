@@ -4,9 +4,43 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Cadastro de Usuários</title>
 </head>
 <body>
-  
+  <h1>Cadastro de Usuários</h1>
+  <form method="post" action="/usuarios">
+    <label>Nome:</label>
+    <input type="text" name="name"><br>
+    <label>Endereço:</label>
+    <input type="text" name="address"><br>
+    <label>CPF:</label>
+    <input type="text" name="cpf"><br>
+    <label>Telefone:</label>
+    <input type="text" name="phone"><br>
+    <label>E-mail:</label>
+    <input type="text" name="email"><br>
+    <input type="submit" value="Cadastrar">
+  </form>
+  <br>
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Endereço</th>
+        <th>CPF</th>
+        <th>Telefone</th>
+        <th>E-mail</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="usuario: ${usuarios}">
+        <td th:text="${usuario.name}"></td>
+        <td th:text="${usuario.address}"></td>
+        <td th:text="${usuario.cpf}"></td>
+        <td th:text="${usuario.phone}"></td>
+        <td th:text="${usuario.email}"></td>
+      </tr>
+    </tbody>
+  </table>
 </body>
 </html>

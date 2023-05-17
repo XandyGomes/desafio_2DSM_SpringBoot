@@ -20,12 +20,27 @@ public class CadastrosController {
 
   @GetMapping
   public ModelAndView listar() {
-
+    ModelAndView modelAndView = new ModelAndView("usuarios");
+    modelAndView.addObject("usuarios", cadastros);
+    return modelAndView;
   }
   
   @PostMapping
-  public ModelAndView cadastrar() {
+  public ModelAndView cadastrar( String name,
+                                 String address,
+                                 String cpf,
+                                 String phone,
+                                 String email) {
+    Cadastro cadastro = new Cadastro();
+    cadastro.setName(name);
+    cadastro.setAddress(address);
+    cadastro.setCpf(cpf);
+    cadastro.setPhone(phone);
+    cadastro.setEmail(email);
+    
+    cadastros.add(cadastro);
 
+    return new ModelAndView("redirect:/usuarios");
   }
 }
 
